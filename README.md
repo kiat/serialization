@@ -15,4 +15,4 @@ Directory ./C++
 # TPC-H Benchmark
 http://www.tpc.org/tpch/
 
-Our Experimental Dataset is in tables_scale_0.1
+Our Experimental Dataset is in Directory ./tables_scale_0.1
