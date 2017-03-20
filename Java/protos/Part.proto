@@ -1,0 +1,17 @@
+package edu.rice.pdb.serialization.proto;
+
+option java_package = "edu.rice.pdb.serialization.proto";
+option java_outer_classname = "PartProtos";
+
+
+message PartP {
+  required int32 partID = 1;
+  required string name = 2;
+  required string mfgr = 3;
+  required string brand = 4;
+  required string type = 5;
+  required int32 size = 6;
+  required string container = 7;
+  required double retailPrice = 8;
+  required string comment = 9;
+}

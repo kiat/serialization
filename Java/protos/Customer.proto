@@ -1,0 +1,87 @@
+package edu.rice.pdb.serialization.proto;
+
+option java_package = "edu.rice.pdb.serialization.proto";
+option java_outer_classname = "CustomerProtos";
+
+message CustomerP { 
+
+
+	required int32 custkey=1;
+	required string name=2;
+	required string address=3;
+	required int32 nationkey=4;
+	required string phone=5;
+	required double accbal=6;
+	required string mktsegment=7;
+	required string comment=8;
+
+
+message OrderP {
+	 
+	 	required string orderStatus =1;
+	 	required double totalPrice=2;
+ 		required string orderDate=3;
+ 		required string orderPriority=4;
+ 		required string clerk=5;
+	 	required int32 shipPeriority=6;
+ 		required string comment=7;
+
+  
+ 
+message LineItemP {
+
+
+	 required int32 lineNumber =1;
+	 required double quantity =2 ;
+	 required double extendedPrice =3;
+	 required double discount = 4;
+	 required double tax =5;
+	 required string returnFlag=6;
+	 required string lineStatus=7;
+
+	 required string shipDate=8;
+	 required string commitDate=9;
+	 required string receiptDate=10;
+
+	 required string shipinStruct=11;
+	 required string shipMode=12;
+	 required string comment=13;  
+
+
+
+
+message SupplierP {
+	required int32 supplierKey=1;
+	required string name=2;
+	required string address=3;
+	required int32 nationKey=4;
+	required string phone=5;
+	required double accbal=6;
+	required string comment=7;
+  }
+  
+  
+ message PartP {
+  required int32 partID = 1;
+  required string name = 2;
+  required string mfgr = 3;
+  required string brand = 4;
+  required string type = 5;
+  required int32 size = 6;
+  required string container = 7;
+  required double retailPrice = 8;
+  required string comment = 9;
+}
+
+  required PartP partP = 14;
+  required SupplierP supplierP = 15;
+  
+}
+  
+
+  repeated LineItemP lineItem = 8;
+}
+
+
+  repeated OrderP order = 9;
+ }

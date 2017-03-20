@@ -1,0 +1,48 @@
+package edu.rice.pdb.serialization.proto;
+
+option java_package = "edu.rice.pdb.serialization.proto";
+option java_outer_classname = "UniversityProtos";
+
+
+  
+
+
+message University {
+  required string name = 1;
+  required string universityID = 2;
+  repeated ClassRoom class = 3;
+ 
+}
+
+
+  
+message ClassRoom {
+  required string name = 1;
+  required int32 classRoomID = 2;
+  repeated Student student = 3;
+  
+}
+
+
+  
+message Student {
+  required string name = 1;
+  required int32 studentId = 2;
+  optional string email = 3;
+  
+
+message TakenCourses {
+    required string takenCoursesID = 1;
+    required string takenCourseName = 2;
+    optional int32 givenGrade  = 3;
+  }
+
+  repeated TakenCourses takenCourses = 4;
+}
+  
+  
+
+  
+  
+
+
