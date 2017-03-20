@@ -36,16 +36,11 @@ To run all of the experiments run the following shell scripts on a linux machine
 
 
 
-Here are the various alternatives I'd suggest we look at:
-
 1) (Java) over the wire: JSON, in memory: javax.json
 2) (Java) over the wire: Java serialization, in memory: Java objects
 3) (Java) over the wire: Protocol buffers, in memory: Java objects
-4) (C++) over the wire: Protocol buffers, in memory: C++ objects
-5) (C++) over the wire: Hand-coded serialization, in memory: C++ objects
-6) (C++) our own PDB solution
 
-And here's the tasks we might consider:
+Computation Experiment tasks:
 
 1) Randomly access N objects from across a local disk
 2) In a cluster of 10 machines, access N objects from each machine's local disk, ship to a central location
@@ -69,40 +64,22 @@ https://docs.mongodb.com/ecosystem/drivers/java/
 # google protocol buffers
 https://developers.google.com/protocol-buffers/
 
-# Protostuff
-
-https://github.com/protostuff/protostuff
 
 # Kryo 
 
 https://github.com/EsotericSoftware/kryo 
 
 
-# Avro 
+# Futher Serialization Framework for Java 
 
+There are many futher serialization frameworks for Java that we have not addressed in our experiments. We think that they are similar to one of the frameworks that we choosen for our experiments like google protocol buffer or Kryo. 
+
+Protostuff
+https://github.com/protostuff/protostuff
+
+Avro 
 http://avro.apache.org/
-
 https://github.com/phunt/avro-rpc-quickstart
 
-
-# Thrift 
-
+Thrift 
 http://thrift.apache.org/
-
-
-
-
-
-Interesting for C++
-----------------------
-
-https://github.com/mongodb/libbson
-
-
-
-https://avro.apache.org/docs/1.7.0/api/cpp/html/index.html
-
-
-
-
-
