@@ -1,5 +1,4 @@
-# Serialization Experiments
-An Experimental Comparison of Complex Object Implementations for Big Data Systems
+# An Experimental Comparison of Complex Object Implementations for Big Data Systems
 
 # Java
 
