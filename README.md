@@ -165,7 +165,9 @@ Then we access the object attributes using the getter methods and write them to 
 
 ```Java
 ByteArrayOutputStream baos =  new ByteArrayOutputStream();
-com.fasterxml.jackson.core.JsonGenerator gen  = BsonSinglton.getInstance().getFactory().createJsonGenerator(baos);
+com.fasterxml.jackson.core.JsonGenerator gen  = BsonSinglton.getInstance()
+.getFactory().createJsonGenerator(baos);
+
 gen.writeStartObject();
 gen.writeFieldName("partid");
 gen.writeNumber(this.getPartID());
