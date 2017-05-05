@@ -1,6 +1,12 @@
 # An Experimental Comparison of Complex Object Implementations for Big Data Systems
 
+In this project,  We experimentally compare different models for complex objects (host language objects and interchange formats such as JSON) as well as different methods for moving between RAM and a wire (host language serialization, BSON, Protocol buffers, and the classical database method of avoiding de/serialization entirely) and different language runtimes (managed and garbage collected vs. not).
 
+..* We compare ten different complex object implementations across four different, representative tasks, from simple object reads, to an external sort for duplicate removal, to networked computations.
+ 
+ ..* We consider a spectrum of object complexities, from an object type that looks a lot like a classical relational record, to a complex object nested four levels deep, requiring up to 30KB to store on disk. 
+ 
+ 
 
 # Java
 Java Implementation is in Directory ./Java
