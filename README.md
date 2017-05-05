@@ -121,7 +121,7 @@ byteBuffer.put(commentBytes);
 return byteBuffer.array();
 ```
 
-#5. Java JSON objects compressed using GZip
+# 5. Java JSON objects compressed using GZip
 
 JSON is a common interchange format, often associated with document databases.
 
@@ -215,7 +215,7 @@ provides an API (the *ObjectMapper} API)
 that iterates over a list of objects and serializes them.
 
 
-#7. C++ objects with BOOST serialization/deserialization, version 1.59. 
+# 7. C++ objects with BOOST serialization/deserialization, version 1.59. 
 
 BOOST is the classical C++ serialization package, and one of the options that we consider.  
 To use BOOST, we simply design C++ classes for each of the various data types, using primitive types such as *int}, *double}, and 
@@ -287,13 +287,13 @@ During serialization, primitive types are written directly to the output page.  
 of the string, followed by the characters.  Serializing object pointers or collections of pointers to objects requires a recursive 
 serialization.  
 
-#9. C++ objects with Protocol Buffers, version 2.6.1. 
+# 9. C++ objects with Protocol Buffers, version 2.6.1. 
 
 Protocol buffers have been described above, and the C++ implementation does not differ significantly from the Java implementation. 
 However, in the case of C++, we do not translate into a separate representation.  The C++ PB classes are simple wrappers over the PB compiler generated classes.
 
 
-#10. In-Place C++ objects
+# 10. In-Place C++ objects
 We have previously described the philosophy behind in-place objects in detail.  In practice, in-place objects rely on C++ to pack primitive types 
 within a contiguous region of memory.  *offset_ptr*s are used to implement character strings and arrays of sub-objects.  For example, we have:
 
