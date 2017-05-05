@@ -40,11 +40,9 @@ Each of our Java classes have a Base class that has the following code to self-s
 
 ```Java
 public  byte[] kryoSerialization() {
-  ByteArrayOutputStream bos = 
-    new ByteArrayOutputStream();
+  ByteArrayOutputStream bos =  new ByteArrayOutputStream();
   Output output = new Output(bos);
-  KryoSinglton.getInstance().getKryo()
-    .writeObject(output, this);
+  KryoSinglton.getInstance().getKryo().writeObject(output, this);
   output.flush();
   byte[] buf = bos.toByteArray();
   return buf;
