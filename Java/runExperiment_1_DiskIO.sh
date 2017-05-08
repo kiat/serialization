@@ -1,6 +1,6 @@
 #!/bin/bash
-# svn up
-# mvn clean compile assembly:single
+
+mvn clean compile assembly:single
 
 for num in  10 100 1000 10000 100000
 do
@@ -29,7 +29,6 @@ do
 		echo " data type is $dataType serial $serialType"
 
 time taskset -c 0 java -XX:-UseGCOverheadLimit  -Xms15g -Xmx30g   -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.experiments.Experiment_1_4_AccessDataFromLocalDisk    $num $dataType $seq $serialType
-# time java -XX:-UseGCOverheadLimit  -Xms15g -Xmx30g   -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.experiments.Experiment_1_4_AccessDataFromLocalDisk    $num $dataType $seq $serialType
 # java  -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -d64  -Xms15g -Xmx30g   -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.experiments.Experiment_1_4_AccessDataFromLocalDisk    $num $dataType $seq $serialType
 
 		done
