@@ -11,7 +11,16 @@ Server Startup
 
 Not forwarding to other port, and only collect on the node. 
 
-java    -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.serial.networking.SocketServer 5454 2 2000 5 2 false
+
+
+	java    -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.serial.networking.SocketServer 5454 2 2000 5 2  true false false 
+
+
+parameters are 
+
+
+
+
 
 
 

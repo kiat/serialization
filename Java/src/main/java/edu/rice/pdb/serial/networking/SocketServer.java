@@ -73,7 +73,7 @@ public class SocketServer {
 		if (args.length < 4) {
 
 			System.out.println("Run it with the following arguments");
-			System.out.print("portNumber numberOfClients, numberOfExpectedObjectsToReceive, an int for SerializationMethod 1-JavaDefault 2-JSON  3-ProtocolBuffer");
+			System.out.print("PortNumber,  NumberOfClients, numberOfExpectedObjectsToReceive, an int for Serialization Type, an int for Data type, true/false (final node), true/false send from disk or not, true/false is this a aggeragation server (if true server address and port for forwarding of data) ");
 			System.out.println("DataTypes: 1. Element 2. Part 3. LineItem 4. Customer ");
 			System.out.println("Forwarding hostname port");
 
