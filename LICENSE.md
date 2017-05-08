@@ -7,6 +7,9 @@
 
 © Sourav Sikdar, Kia Teymourian, Chris Jermaine
 
+![Creative Commons Attribution-ShareAlike 4.0 International License](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)
+
+
 
 
 ```html
