@@ -42,17 +42,14 @@ public class LongVectorGenerationUnitTest {
 		ArrayList<RootData> listC = myelement.generateRandomObjects(100, 10);
 
 		ArrayList<RootData> listAggergated = Utils.aggergateSparseVector(listA, listB, listC);
-		
-		System.out.println("Aggergated List size: "+listAggergated.size());
-		
+
+		System.out.println("Aggergated List size: " + listAggergated.size());
+
 		for (RootData data : listAggergated) {
 			Element tmp = (Element) data;
 
 			System.out.println(tmp.getMyInteger());
 
 		}
-		
-		
-		}
-
+	}
 }

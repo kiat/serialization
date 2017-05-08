@@ -54,15 +54,13 @@ public class ObjectSizeTest {
 	@Test
 	public void elementObjectSizeTest() {
 
-		Element my =new Element(1L, 1.0);
-		
+		Element my = new Element(1L, 1.0);
+
 		byte[] mydata = my.kryoSerialization(KryoSinglton.getInstance().getKryo());
 		System.out.println(mydata.length);
-		System.out.println("Size of Long: " + Long.SIZE/8);
-		System.out.println("Size of Double: " + Double.SIZE/8);
+		System.out.println("Size of Long: " + Long.SIZE / 8);
+		System.out.println("Size of Double: " + Double.SIZE / 8);
 
-		
-		
 		for (int i = 1; i < 7; i++) {
 
 			switch (i) {
@@ -95,12 +93,6 @@ public class ObjectSizeTest {
 
 		}
 
-		
-	}
-
-	private String sizeof() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

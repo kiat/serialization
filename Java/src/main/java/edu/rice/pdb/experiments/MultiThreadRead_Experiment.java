@@ -8,9 +8,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -23,7 +20,6 @@ import edu.rice.dmodel.RootData;
 import edu.rice.pdb.read.SerializationMethod;
 import edu.rice.pdb.serial.garbagecollector.Garbage;
 import edu.rice.pdb.serialization.Const;
-import edu.rice.pdb.serialization.KryoObject;
 import edu.rice.pdb.serialization.KryoSinglton;
 import edu.rice.pdb.util.Utils;
 
@@ -155,16 +151,12 @@ public class MultiThreadRead_Experiment extends Thread {
 			
 			for (int i = 0; i < 4; i++) {
 				
-				// we read the index to the size of 6 times number of objects
+				// We read the index to the size of 6 times number of objects
 				myIndexes[i] = Utils.readIndex(indexFile, 6*numberOfObjectsToRead);
-//				System.out.println("Index file is : " + indexFile);
-//				System.out.println("Size of Index is: " + sizeIndex.getStarts().length);
-				
 			}
 			
 			
 
-//			MultiThreadRead_Experiment[] allOfMyThreads = new MultiThreadRead_Experiment[numberOfThreads];
 
 			long startTime = 0;
 			// NOW read the objects from memory
@@ -172,21 +164,11 @@ public class MultiThreadRead_Experiment extends Thread {
 			startTime = System.nanoTime();
 
 			
-//			ExecutorService taskExecutor = Executors.newFixedThreadPool(numberOfThreads);
 			
 			for (int i = 0; i < 4; i++) {
 				
-//			  taskExecutor.execute(new MultiThreadRead_Experiment(sizeIndex, method, myDataType, numberOfObjectsToRead, counter * numberOfObjectsToRead, indexFile, fileinput));
 			  new MultiThreadRead_Experiment(myIndexes[i], method, myDataType, numberOfObjectsToRead, i * numberOfObjectsToRead, fileinput).run();
 			}
-//			
-//			taskExecutor.shutdown();
-//			try {
-//			  taskExecutor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
-//			} catch (InterruptedException e) {
-//
-//			}
-
 			
 			latch.await(); // Wait for countdown
 

@@ -25,7 +25,6 @@ import edu.rice.dmodel.IndexData;
 import edu.rice.dmodel.RootData;
 import edu.rice.pdb.read.SerializationMethod;
 import edu.rice.pdb.serialization.Const;
-import edu.rice.pdb.serialization.KryoSinglton;
 import edu.rice.pdb.sort.WriteValues;
 
 public class Utils {

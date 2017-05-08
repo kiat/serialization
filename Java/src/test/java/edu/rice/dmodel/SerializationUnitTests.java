@@ -17,7 +17,6 @@ import javax.json.JsonWriterFactory;
 import javax.json.stream.JsonGenerator;
 
 import org.apache.log4j.PropertyConfigurator;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
 import edu.rice.pdb.read.SerializationMethod;
@@ -26,8 +25,6 @@ import edu.rice.pdb.serialization.KryoSinglton;
 import edu.rice.pdb.util.Utils;
 
 public class SerializationUnitTests {
-
-
 
 	public SerializationUnitTests() {
 		PropertyConfigurator.configure("log4j.properties");
@@ -60,7 +57,7 @@ public class SerializationUnitTests {
 	public void kryoElementTest() {
 
 		Element myElement = new Element();
-		long x=1;
+		long x = 1;
 
 		myElement.setMyInteger(x);
 		myElement.setMyDouble(1.0);
@@ -162,7 +159,8 @@ public class SerializationUnitTests {
 
 	@Test
 	public void bsonTest() {
-		// Supplier mySupplier = new Supplier(1, "name", "address", 1, "phone", 1.0, "comment");
+		// Supplier mySupplier = new Supplier(1, "name", "address", 1, "phone",
+		// 1.0, "comment");
 		Part myPart = new Part(1, "tmpName", "tmpMfgr", "tmpBrand", "tmpType", 1, "tmpContainer", 1.0, "tmpComment");
 
 		byte[] bufSupplier = myPart.bsonSerialization();
@@ -172,8 +170,6 @@ public class SerializationUnitTests {
 		assertEquals(myPart.getPartID(), newPart.getPartID());
 	}
 
-	
-	
 	@Test
 	public void protocolBufferSerialiyationTest() {
 		Part myPart = new Part(1, "tmpName", "tmpMfgr", "tmpBrand", "tmpType", 1, "tmpContainer", 1.0, "tmpComment");
@@ -188,76 +184,70 @@ public class SerializationUnitTests {
 				objectList.add(byteObjects);
 			}
 
-			Utils.writeObjectsWithIndex(objectList, 1,  "protocolBufferSerialiyationTest.index", "protocolBufferSerialiyationTest.object");
+			Utils.writeObjectsWithIndex(objectList, 1, "protocolBufferSerialiyationTest.index", "protocolBufferSerialiyationTest.object");
 
 			// Part
-			// Calculate the time only before and after reading objects from file read not sequentially
-			ArrayList<RootData> results1 = WriteAndRead.readObjects(SerializationMethod.PROTOCOL, new Part(), 658, 658,  "protocolBufferSerialiyationTest.index", "protocolBufferSerialiyationTest.object", false, true);
+			// Calculate the time only before and after reading objects from
+			// file read not sequentially
+			ArrayList<RootData> results1 = WriteAndRead.readObjects(SerializationMethod.PROTOCOL, new Part(), 658, 658, "protocolBufferSerialiyationTest.index",
+					"protocolBufferSerialiyationTest.object", false, true);
 			Part newPart = (Part) results1.get(1);
-			
-			
+
 			System.out.println(newPart);
-			
+
 			assertEquals(myPart.getName(), newPart.getName());
 
 			// Read sequentially
-			ArrayList<RootData> results2 = WriteAndRead.readObjects(SerializationMethod.PROTOCOL, new Part(),658, 658, "protocolBufferSerialiyationTest.index", "protocolBufferSerialiyationTest.object", true, false);
+			ArrayList<RootData> results2 = WriteAndRead.readObjects(SerializationMethod.PROTOCOL, new Part(), 658, 658, "protocolBufferSerialiyationTest.index",
+					"protocolBufferSerialiyationTest.object", true, false);
 
 			System.out.println(results2.size());
 			Part newPart2 = (Part) results2.get(1);
-			
+
 			System.out.println(newPart2);
-			
+
 			assertEquals(myPart.getName(), newPart2.getName());
-			
+
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
-	
+
 	@Test
 	public void testIndexSerialization() {
-		
+
 		long[] indexPositions = new long[300];
 		int[] indexLenghts = new int[20];
-		
-//		System.out.println(indexPositions.length);
-		
+
+		// System.out.println(indexPositions.length);
+
 		// 2147483647
 		for (int i = 0; i < 300; i++) {
 			indexPositions[i] = (long) i;
 		}
-		
+
 		for (int i = 0; i < 20; i++) {
-			indexLenghts[i]=i;
+			indexLenghts[i] = i;
 		}
-		
-		Utils.writeIndex(indexPositions, indexLenghts ,  "testIndex.index");
-		
-		
-		
-		IndexData indexNew=Utils.readIndex("testIndex.index", 0);
-		
-		
-		System.out.println("indexNew.getLenghts().length  "+indexNew.getLenghts().length);
-		
-		int i=123;
-		System.out.print(indexPositions[i]+  " should be equal to  ");
+
+		Utils.writeIndex(indexPositions, indexLenghts, "testIndex.index");
+
+		IndexData indexNew = Utils.readIndex("testIndex.index", 0);
+
+		System.out.println("indexNew.getLenghts().length  " + indexNew.getLenghts().length);
+
+		int i = 123;
+		System.out.print(indexPositions[i] + " should be equal to  ");
 		System.out.println(indexNew.getStarts()[i]);
 
-		
 		assertEquals(indexPositions[i], indexNew.getStarts()[i]);
-	
+
 	}
-	
-	
-	
 
 	@Test
 	public void jsonElementTest() {
-		Element myElement = new Element((long)1, 1.0);
+		Element myElement = new Element((long) 1, 1.0);
 
 		byte[] buf = myElement.jsonSerialization();
 
@@ -266,48 +256,36 @@ public class SerializationUnitTests {
 		assertEquals(myElement.getMyInteger(), newSupplier.getMyInteger());
 
 	}
-	
-	
-	
-	
+
 	@Test
 	public void jsonElementFileTest() {
 
-
 		ArrayList<byte[]> objectList = new ArrayList<byte[]>();
 		for (int i = 0; i < 100; i++) {
-			Element myElement = new Element((long)1, 1.0);
-			
+			Element myElement = new Element((long) 1, 1.0);
+
 			byte[] byteObjects = myElement.jsonSerialization();
 			objectList.add(byteObjects);
 		}
 
-
 		try {
 
-	
 			Utils.writeObjectsWithIndex(objectList, 1, "testElement.index", "testElement.object");
-
-
 
 			// Read sequentially
 			ArrayList<RootData> results2 = WriteAndRead.readObjects(SerializationMethod.JSON, new Element(), 20, 20, "testElement.index", "testElement.object", true, true);
 
 			Element newPart2 = (Element) results2.get(15);
-			
-			System.out.println( newPart2.getMyInteger());
-			
-			
-			assertTrue(1==newPart2.getMyInteger());
-			
+
+			System.out.println(newPart2.getMyInteger());
+
+			assertTrue(1 == newPart2.getMyInteger());
+
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
-	
-	
 
 	@Test
 	public void comapareLineItemTest() {
@@ -320,13 +298,11 @@ public class SerializationUnitTests {
 		LineItem myLineItem = new LineItem(i, mySupplier, myPart, i, i, i, i, i, "a" + i, "a" + i, "Data-" + i, "Data-" + i, "Data-" + i, "a" + i, "a" + i, "comment" + i);
 		LineItem myLineItem1 = new LineItem(i, mySupplier, myPart, i, i, i, i, i, "a" + i, "a" + i, "Data-" + i, "Data-" + i, "Data-" + i, "a" + i, "a" + i, "comment" + i);
 
-//		System.out.println("Here is the result "+myLineItem.compareTo(myLineItem1));
-		
+		// System.out.println("Here is the result "+myLineItem.compareTo(myLineItem1));
+
 		assertEquals(myLineItem.compareTo(myLineItem1), 0);
 	}
-	
-	
-	
+
 	@Test
 	public void writeAndReadTestJSON() {
 
@@ -335,32 +311,32 @@ public class SerializationUnitTests {
 			ArrayList<Part> myObjects = new ArrayList<Part>();
 
 			for (int i = 0; i < 10000; i++) {
-				Part myPart = new Part(i, "tmpName"+i, "tmpMfgr", "tmpBrand", "tmpType", i, "tmpContainer", 1.0, "tmpComment");
+				Part myPart = new Part(i, "tmpName" + i, "tmpMfgr", "tmpBrand", "tmpType", i, "tmpContainer", 1.0, "tmpComment");
 				myObjects.add(myPart);
-				
+
 				byte[] byteObjects = myPart.jsonSerialization();
 
 				objectList.add(byteObjects);
 			}
 
-			Utils.writeObjectsWithIndex(objectList, 1,  "jsonSerialiyationTest.index", "jsonSerialiyationTest.object");
+			Utils.writeObjectsWithIndex(objectList, 1, "jsonSerialiyationTest.index", "jsonSerialiyationTest.object");
 
-//			// Part
-//			// Calculate the time only before and after reading objects from file read not sequentially
-			ArrayList<RootData> results1 = WriteAndRead.readObjects(SerializationMethod.JSON, new Part(), 3001, 4000, "jsonSerialiyationTest.index", "jsonSerialiyationTest.object", true, false);
+			// // Part
+			// // Calculate the time only before and after reading objects from
+			// file read not sequentially
+			ArrayList<RootData> results1 = WriteAndRead.readObjects(SerializationMethod.JSON, new Part(), 3001, 4000, "jsonSerialiyationTest.index",
+					"jsonSerialiyationTest.object", true, false);
 			Part newPart = (Part) results1.get(0);
-			
-			
+
 			System.out.println(newPart);
 			assertEquals(myObjects.get(0).getName(), newPart.getName());
-			
-		} catch (Exception  e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-	
-	
+
 	@Test
 	public void writeAndReadTestProtocolBuffer() {
 
@@ -369,46 +345,47 @@ public class SerializationUnitTests {
 			ArrayList<Part> myObjects = new ArrayList<Part>();
 
 			for (int i = 0; i < 4000; i++) {
-				Part myPart = new Part(i, "tmpName"+i, "tmpMfgr", "tmpBrand", "tmpType", i, "tmpContainer", 1.0, "tmpComment");
+				Part myPart = new Part(i, "tmpName" + i, "tmpMfgr", "tmpBrand", "tmpType", i, "tmpContainer", 1.0, "tmpComment");
 				myObjects.add(myPart);
-				
+
 				byte[] byteObjects = myPart.protocolBufferWrite();
-//				byte[] byteObjects = myPart.jsonSerialization();
+				// byte[] byteObjects = myPart.jsonSerialization();
 
 				objectList.add(byteObjects);
 			}
 
-			Utils.writeObjectsWithIndex(objectList, 1,  "protocolBufferSerialiyationTest.index", "protocolBufferSerialiyationTest.object");
+			Utils.writeObjectsWithIndex(objectList, 1, "protocolBufferSerialiyationTest.index", "protocolBufferSerialiyationTest.object");
 
-//			// Part
-//			// Calculate the time only before and after reading objects from file read not sequentially
-			ArrayList<RootData> results1 = WriteAndRead.readObjects(SerializationMethod.PROTOCOL, new Part(), 1502, 3000, "protocolBufferSerialiyationTest.index", "protocolBufferSerialiyationTest.object", true, false);
+			// // Part
+			// // Calculate the time only before and after reading objects from
+			// file read not sequentially
+			ArrayList<RootData> results1 = WriteAndRead.readObjects(SerializationMethod.PROTOCOL, new Part(), 1502, 3000, "protocolBufferSerialiyationTest.index",
+					"protocolBufferSerialiyationTest.object", true, false);
 			Part newPart = (Part) results1.get(0);
-			
-			
+
 			System.out.println(newPart);
 			assertEquals(myObjects.get(0).getName(), newPart.getName());
-			
-		} catch (Exception  e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-	
-	
 
 	@Test
 	public void objectSizeTest() {
-		// Supplier mySupplier = new Supplier(1, "name", "address", 1, "phone", 1.0, "comment");
+		// Supplier mySupplier = new Supplier(1, "name", "address", 1, "phone",
+		// 1.0, "comment");
 		Part myPart = new Part(1, "t", "t", "t", "t", 1, "t", 1.0, "t");
 
 		byte[] bufSupplier = myPart.bsonSerialization();
 
-		System.out.println("Size of Object : " +bufSupplier.length);
-		
-//		Part newPart = (Part) myPart.bsonDeSerialization(bufSupplier, myPart.getClass());
-//
-//		assertEquals(myPart.getPartID(), newPart.getPartID());
+		System.out.println("Size of Object : " + bufSupplier.length);
+
+		// Part newPart = (Part) myPart.bsonDeSerialization(bufSupplier,
+		// myPart.getClass());
+		//
+		// assertEquals(myPart.getPartID(), newPart.getPartID());
 	}
 
 	@Test
@@ -417,78 +394,64 @@ public class SerializationUnitTests {
 		ArrayList<RootData> mydata1 = new Element().generateRandomObjects(20, 5);
 		ArrayList<RootData> mydata2 = new Element().generateRandomObjects(20, 5);
 		ArrayList<RootData> mydata3 = new Element().generateRandomObjects(20, 5);
-		
-		
-		
-		
+
 		System.out.println("MyData1");
 		for (RootData rootData : mydata1) {
-			Element e=(Element) rootData; 
-			System.out.println("(" + e.getMyInteger() +" , " +e.getMyDouble() +")");
+			Element e = (Element) rootData;
+			System.out.println("(" + e.getMyInteger() + " , " + e.getMyDouble() + ")");
 		}
-	
+
 		System.out.println("MyData2");
 		for (RootData rootData : mydata2) {
-			Element e=(Element) rootData; 
-			System.out.println("(" + e.getMyInteger() +" , " +e.getMyDouble() +")");
+			Element e = (Element) rootData;
+			System.out.println("(" + e.getMyInteger() + " , " + e.getMyDouble() + ")");
 		}
-	
-		
+
 		System.out.println("MyData3");
 		for (RootData rootData : mydata3) {
-			Element e=(Element) rootData; 
-			System.out.println("(" + e.getMyInteger() +" , " +e.getMyDouble() +")");
+			Element e = (Element) rootData;
+			System.out.println("(" + e.getMyInteger() + " , " + e.getMyDouble() + ")");
 		}
-		
-		ArrayList<RootData> aggegated=Utils.aggergateSparseVector(mydata1, mydata2, mydata3);
-		
+
+		ArrayList<RootData> aggegated = Utils.aggergateSparseVector(mydata1, mydata2, mydata3);
+
 		System.out.println("aggegated");
 		for (RootData rootData : aggegated) {
-			Element e=(Element) rootData; 
-			System.out.println("(" + e.getMyInteger() +" , " +e.getMyDouble() +")");
+			Element e = (Element) rootData;
+			System.out.println("(" + e.getMyInteger() + " , " + e.getMyDouble() + ")");
 		}
-		System.out.println("aggegated size: "+aggegated.size());
-		
-		
+		System.out.println("aggegated size: " + aggegated.size());
+
 	}
-	
 
 	@Test
 	public void vectorAggregationTest2() {
-		
+
 		System.out.println("Created Vector 1. ");
 		ArrayList<RootData> mydata1 = new Element().generateRandomObjects(100000000, 10000000);
-		
+
 		System.out.println("Created Vector 2. ");
 		ArrayList<RootData> mydata2 = new Element().generateRandomObjects(100000000, 10000000);
-		
+
 		System.out.println("Created Vector 3. ");
 		ArrayList<RootData> mydata3 = new Element().generateRandomObjects(100000000, 10000000);
-		
+
 		long startTime = System.nanoTime();
-		
+
 		System.out.println("Starting Vector Aggregation...");
 
-		
-		ArrayList<RootData> aggegated=Utils.aggergateSparseVector(mydata1, mydata2, mydata3);
-		
-		
+		ArrayList<RootData> aggegated = Utils.aggergateSparseVector(mydata1, mydata2, mydata3);
+
 		long endTime = System.nanoTime();
 
 		double elapsedTotalTime = (endTime - startTime) / 1000000000.0;
 
-		System.out.println("Aggregation Time in Sec is : "+String.format("%.9f", elapsedTotalTime));
+		System.out.println("Aggregation Time in Sec is : " + String.format("%.9f", elapsedTotalTime));
 
-		System.out.println("aggegated size: "+aggegated.size());
-		
-		
-		
-		
-		
+		System.out.println("aggegated size: " + aggegated.size());
+
 	}
-	
-	
-	
+
 	@Test
 	public void CustomerJsonTest() {
 
@@ -500,40 +463,34 @@ public class SerializationUnitTests {
 		LineItem myLineItem = new LineItem(i, mySupplier, myPart, i, i, i, i, i, "a" + i, "a" + i, "Data-" + i, "Data-" + i, "Data-" + i, "a" + i, "a" + i, "comment" + i);
 		LineItem myLineItem1 = new LineItem(i, mySupplier, myPart, i, i, i, i, i, "a" + i, "a" + i, "Data-" + i, "Data-" + i, "Data-" + i, "a" + i, "a" + i, "comment" + i);
 
-		List<LineItem> myLineItemsList = new ArrayList<LineItem>(); 
+		List<LineItem> myLineItemsList = new ArrayList<LineItem>();
 		myLineItemsList.add(myLineItem);
-		myLineItemsList.add(myLineItem1);		
-		
-		Order myOrder =new Order(myLineItemsList, 1, 1, "orderstatus",  1.0 , "orderdate", "orderpriority", "clerk", 1, "comment");
-		Order myOrder1 =new Order(myLineItemsList, 1, 2, "orderstatus",  1.0 , "orderdate", "orderpriority", "clerk", 1, "comment");
-		
-		List<Order> myOrderList = new ArrayList<Order>(); 
-		
+		myLineItemsList.add(myLineItem1);
+
+		Order myOrder = new Order(myLineItemsList, 1, 1, "orderstatus", 1.0, "orderdate", "orderpriority", "clerk", 1, "comment");
+		Order myOrder1 = new Order(myLineItemsList, 1, 2, "orderstatus", 1.0, "orderdate", "orderpriority", "clerk", 1, "comment");
+
+		List<Order> myOrderList = new ArrayList<Order>();
+
 		myOrderList.add(myOrder);
 		myOrderList.add(myOrder1);
-		
-		Customer myCustomer = new Customer(myOrderList, 1, "name", "address", 1, "phone", 1.0 , "mktsegment", "comment");
-		  
-		JsonObject  myJsonObject = myCustomer.jsonObjectBuilder();
-		
 
-        Map<String, Object> properties = new HashMap<>(1);
-        properties.put(JsonGenerator.PRETTY_PRINTING, true);
-        StringWriter sw = new StringWriter();
-        
-        JsonWriterFactory writerFactory = Json.createWriterFactory(properties);
-        JsonWriter jsonWriter = writerFactory.createWriter(sw);
+		Customer myCustomer = new Customer(myOrderList, 1, "name", "address", 1, "phone", 1.0, "mktsegment", "comment");
 
-        jsonWriter.writeObject(myJsonObject);
-        jsonWriter.close();
-        
-        
-		
+		JsonObject myJsonObject = myCustomer.jsonObjectBuilder();
+
+		Map<String, Object> properties = new HashMap<>(1);
+		properties.put(JsonGenerator.PRETTY_PRINTING, true);
+		StringWriter sw = new StringWriter();
+
+		JsonWriterFactory writerFactory = Json.createWriterFactory(properties);
+		JsonWriter jsonWriter = writerFactory.createWriter(sw);
+
+		jsonWriter.writeObject(myJsonObject);
+		jsonWriter.close();
+
 		System.out.println(sw.toString());
-		
-		
-		
-	}
 
+	}
 
 }
