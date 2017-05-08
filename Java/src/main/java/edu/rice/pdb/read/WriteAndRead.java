@@ -1,4 +1,4 @@
-package edu.rice.pdb.randomano;
+package edu.rice.pdb.read;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

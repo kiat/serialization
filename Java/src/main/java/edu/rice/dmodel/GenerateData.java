@@ -6,9 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import org.apache.log4j.PropertyConfigurator;
 
-import edu.rice.pdb.randomano.SerializationMethod;
+import edu.rice.pdb.read.SerializationMethod;
 import edu.rice.pdb.serialization.KryoSinglton;
 import edu.rice.pdb.util.Utils;
 

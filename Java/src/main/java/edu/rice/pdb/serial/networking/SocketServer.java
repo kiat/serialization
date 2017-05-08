@@ -14,7 +14,7 @@ import edu.rice.dmodel.Element;
 import edu.rice.dmodel.LineItem;
 import edu.rice.dmodel.Part;
 import edu.rice.dmodel.RootData;
-import edu.rice.pdb.randomano.SerializationMethod;
+import edu.rice.pdb.read.SerializationMethod;
 
 public class SocketServer {
 

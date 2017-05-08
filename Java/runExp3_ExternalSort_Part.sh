@@ -12,7 +12,7 @@ echo "language#method#seq#datatype#iotime#indextime#totaltime"  > loging.log
 # rm -f tmp/*
 # delete OS Cache
 # echo 3 > /proc/sys/vm/drop_caches && sync
-# time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.localSort.ExternalSort    12    20000000    2  6
+# time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.sort.ExternalSort    12    20000000    2  6
 
 
 
@@ -20,20 +20,20 @@ echo "language#method#seq#datatype#iotime#indextime#totaltime"  > loging.log
 rm -f tmp/*
 # delete OS Cache
 echo 3 > /proc/sys/vm/drop_caches && sync
-time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.localSort.ExternalSort    10    24000000    2  5
+time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.sort.ExternalSort    10    24000000    2  5
 
 
 # rm -f tmp/*
 # delete OS Cache
 # echo 3 > /proc/sys/vm/drop_caches && sync
-# time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.localSort.ExternalSort    10    24000000    2  4
+# time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.sort.ExternalSort    10    24000000    2  4
 
 
 
 rm -f tmp/*
 # delete OS Cache
 echo 3 > /proc/sys/vm/drop_caches && sync
-time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.localSort.ExternalSort    20    12000000    2  3
+time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.sort.ExternalSort    20    12000000    2  3
 
 
 
@@ -41,7 +41,7 @@ time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms1
 rm -f tmp/*
 # delete OS Cache
 echo 3 > /proc/sys/vm/drop_caches && sync
-time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.localSort.ExternalSort    30	  8000000     2  2
+time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.sort.ExternalSort    30	  8000000     2  2
 
 
 
@@ -49,7 +49,7 @@ time  taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms1
 rm -f tmp/*
 # delete OS Cache
 echo 3 > /proc/sys/vm/drop_caches && sync
-time   taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.localSort.ExternalSort    20   12000000    2  1
+time   taskset -c 0  java   -XX:-UseGCOverheadLimit -XX:+UseConcMarkSweepGC -Xms15g -Xmx30g -cp  ./target/PDBSerialization-1.0-SNAPSHOT-jar-with-dependencies.jar edu.rice.pdb.sort.ExternalSort    20   12000000    2  1
 
 
 

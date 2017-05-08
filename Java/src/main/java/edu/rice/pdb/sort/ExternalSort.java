@@ -1,4 +1,4 @@
-package edu.rice.pdb.localSort;
+package edu.rice.pdb.sort;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -22,8 +22,8 @@ import edu.rice.dmodel.IndexData;
 import edu.rice.dmodel.LineItem;
 import edu.rice.dmodel.Part;
 import edu.rice.dmodel.RootData;
-import edu.rice.pdb.randomano.SerializationMethod;
-import edu.rice.pdb.randomano.SerializedData;
+import edu.rice.pdb.read.SerializationMethod;
+import edu.rice.pdb.read.SerializedData;
 import edu.rice.pdb.serial.garbagecollector.Garbage;
 import edu.rice.pdb.serialization.Const;
 import edu.rice.pdb.serialization.KryoSinglton;

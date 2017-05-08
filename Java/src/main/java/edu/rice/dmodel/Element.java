@@ -29,7 +29,7 @@ import org.apache.log4j.Logger;
 import com.fasterxml.jackson.core.JsonToken;
 import com.google.protobuf.CodedInputStream;
 
-import edu.rice.pdb.randomano.WriteAndRead;
+import edu.rice.pdb.read.WriteAndRead;
 import edu.rice.pdb.serialization.BsonSinglton;
 import edu.rice.pdb.serialization.proto.LongVectorProtos.LongVectorP;
 

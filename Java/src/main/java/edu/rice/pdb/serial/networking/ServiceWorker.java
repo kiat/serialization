@@ -23,7 +23,7 @@ import edu.rice.dmodel.Order;
 import edu.rice.dmodel.Part;
 import edu.rice.dmodel.RootData;
 import edu.rice.dmodel.Supplier;
-import edu.rice.pdb.randomano.SerializationMethod;
+import edu.rice.pdb.read.SerializationMethod;
 import edu.rice.pdb.serialization.Const;
 import edu.rice.pdb.util.Utils;
 

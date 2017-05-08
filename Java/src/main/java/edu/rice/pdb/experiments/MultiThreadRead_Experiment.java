@@ -20,7 +20,7 @@ import edu.rice.dmodel.IndexData;
 import edu.rice.dmodel.LineItem;
 import edu.rice.dmodel.Part;
 import edu.rice.dmodel.RootData;
-import edu.rice.pdb.randomano.SerializationMethod;
+import edu.rice.pdb.read.SerializationMethod;
 import edu.rice.pdb.serial.garbagecollector.Garbage;
 import edu.rice.pdb.serialization.Const;
 import edu.rice.pdb.serialization.KryoObject;

@@ -20,8 +20,8 @@ import org.apache.log4j.PropertyConfigurator;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Test;
 
-import edu.rice.pdb.randomano.SerializationMethod;
-import edu.rice.pdb.randomano.WriteAndRead;
+import edu.rice.pdb.read.SerializationMethod;
+import edu.rice.pdb.read.WriteAndRead;
 import edu.rice.pdb.serialization.KryoSinglton;
 import edu.rice.pdb.util.Utils;
 

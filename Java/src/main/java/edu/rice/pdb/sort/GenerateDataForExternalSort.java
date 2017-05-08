@@ -1,4 +1,4 @@
-package edu.rice.pdb.localSort;
+package edu.rice.pdb.sort;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import org.apache.log4j.PropertyConfigurator;
 
 import edu.rice.dmodel.Element;
 import edu.rice.dmodel.RootData;
-import edu.rice.pdb.randomano.SerializationMethod;
-import edu.rice.pdb.randomano.SerializedData;
+import edu.rice.pdb.read.SerializationMethod;
+import edu.rice.pdb.read.SerializedData;
 import edu.rice.pdb.serialization.KryoSinglton;
 import edu.rice.pdb.util.Utils;
 

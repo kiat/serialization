@@ -4,9 +4,9 @@ import java.util.List;
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Test;
 
-import edu.rice.pdb.randomano.DataAndIndex;
-import edu.rice.pdb.randomano.SerializationMethod;
-import edu.rice.pdb.randomano.WriteAndRead;
+import edu.rice.pdb.read.DataAndIndex;
+import edu.rice.pdb.read.SerializationMethod;
+import edu.rice.pdb.read.WriteAndRead;
 import edu.rice.pdb.serial.networking.SocketClient;
 
 

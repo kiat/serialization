@@ -9,8 +9,8 @@ import org.apache.log4j.PropertyConfigurator;
 import edu.rice.dmodel.Customer;
 import edu.rice.dmodel.LineItem;
 import edu.rice.dmodel.Part;
-import edu.rice.pdb.randomano.SerializationMethod;
-import edu.rice.pdb.randomano.WriteAndRead;
+import edu.rice.pdb.read.SerializationMethod;
+import edu.rice.pdb.read.WriteAndRead;
 import edu.rice.pdb.serial.garbagecollector.Garbage;
 
 /**

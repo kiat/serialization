@@ -1,4 +1,4 @@
-package edu.rice.pdb.localSort;
+package edu.rice.pdb.sort;
 
 import edu.rice.dmodel.RootData;
 

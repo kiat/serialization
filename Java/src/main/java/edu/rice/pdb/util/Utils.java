@@ -23,10 +23,10 @@ import com.esotericsoftware.kryo.Kryo;
 import edu.rice.dmodel.Element;
 import edu.rice.dmodel.IndexData;
 import edu.rice.dmodel.RootData;
-import edu.rice.pdb.localSort.WriteValues;
-import edu.rice.pdb.randomano.SerializationMethod;
+import edu.rice.pdb.read.SerializationMethod;
 import edu.rice.pdb.serialization.Const;
 import edu.rice.pdb.serialization.KryoSinglton;
+import edu.rice.pdb.sort.WriteValues;
 
 public class Utils {
 
