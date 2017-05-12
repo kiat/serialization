@@ -1,9 +1,0 @@
-syntax="proto2";
-
-package proto;
-
-message ElementP {
-  required int32 position = 1;
-  required double value = 2;
-}
-  
