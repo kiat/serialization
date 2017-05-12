@@ -1,0 +1,74 @@
+syntax="proto2";
+
+package proto;
+
+
+message OrderP {
+	 
+		required int32 orderKey = 1;	
+		required int32 custKey = 2;
+	 	required string orderStatus = 3;
+	 	required double totalPrice = 4;
+ 		required string orderDate = 5;
+ 		required string orderPriority = 6;
+ 		required string clerk = 7;
+	 	required int32 shipPriority = 8;
+ 		required string comment = 9;
+
+  
+		message LineItemP {
+
+			required int32 lineNumber = 1;
+			required double quantity = 2 ;
+			required double extendedPrice = 3;
+			required double discount = 4;
+			required double tax = 5;
+			required string returnFlag = 6;
+			required string lineStatus = 7;
+
+			required string shipDate = 8;
+			required string commitDate = 9;
+			required string receiptDate = 10;
+
+			required string shipinStruct = 11;
+			required string shipMode = 12;
+			required string comment = 13;  
+
+
+			message SupplierP {
+				required int32 supplierKey = 1;
+				required string name = 2;
+				required string address = 3;
+				required int32 nationKey = 4;
+				required string phone = 5;
+				required double accbal = 6;
+				required string comment = 7;
+			  }
+			  
+		  
+			message PartP {
+			  required int32 partKey = 1;
+			  required string name = 2;
+			  required string mfgr = 3;
+			  required string brand = 4;
+			  required string type = 5;
+			  required int32 size = 6;
+			  required string container = 7;
+			  required double retailPrice = 8;
+			  required string comment = 9;
+			}
+
+			required PartP partP = 14;
+			required SupplierP supplierP = 15;
+
+			required int32  orderKey = 16;
+			required string name = 17;
+
+		}
+  
+  
+
+  		repeated LineItemP lineItem = 10;
+  
+  
+}
