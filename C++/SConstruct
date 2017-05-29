@@ -216,7 +216,7 @@ print 'Version: ' + platform.version()
 
 all = [component_dir_basename_to_cc_file_paths['allocator'],
        component_dir_basename_to_cc_file_paths['datagen'],
-       component_dir_basename_to_cc_file_paths['externalsort'],
+       #component_dir_basename_to_cc_file_paths['externalsort'],
        component_dir_basename_to_cc_file_paths['handcoded'],
        component_dir_basename_to_cc_file_paths['networkexp'],
        component_dir_basename_to_cc_file_paths['offsetptr'],
